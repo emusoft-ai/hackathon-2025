@@ -37,6 +37,11 @@
             return;
         }
 
+        // PERF MODE: JS tabanlı ağır momentum + drag animasyonlarını tamamen kapattık.
+        // Artık sadece CSS tarafındaki hafif, sabit rotation çalışıyor.
+        console.info('[about-wheel] interactive logic disabled for performance (CSS-only spin).');
+        return;
+
         var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         // Otomatik dönüş hızı (derece / saniye)
         var baseSpeed = prefersReducedMotion ? 15 : 35; // deg / s

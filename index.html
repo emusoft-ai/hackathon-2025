@@ -52,13 +52,15 @@
 
     <div id="wrapper">
 
+        <!-- SHARED BACKGROUND VIDEO (INTRO + HERO) -->
+        <video id="bg-video-shared" class="intro-video-bg" autoplay muted loop playsinline>
+            <source src="video/purple-abstract.mp4" type="video/mp4">
+        </video>
+
         <!-- FULLSCREEN INTRO / DISCOVER SCREEN -->
         <section id="intro-discovery" aria-label="Discover Future Minds">
-            <video class="intro-video-bg" autoplay muted loop playsinline>
-                <source src="video/purple-abstract.mp4" type="video/mp4">
-            </video>
             <div class="intro-overlay-content">
-                <img src="images/buyukhacakthonlogo.png"
+                <img src="images/buyukhacakthonlogo.webp"
                      alt="Future Minds'25 Hackathon"
                      class="intro-logo">
                 <button id="discover-btn" class="intro-discover-btn" type="button">
@@ -119,7 +121,7 @@
         </header>
 
         <!-- HERO SECTION -->
-        <section id="section-hero" class="no-top no-bottom text-light jarallax relative" data-video-src="mp4:video/purple-abstract.mp4" data-jarallax-video="mp4:video/purple-abstract.mp4">
+        <section id="section-hero" class="no-top no-bottom text-light relative">
             <div class="gradient-edge-top op-6 h-50"></div>
             <div class="gradient-edge-bottom"></div>
             <div class="sw-overlay op-7"></div>

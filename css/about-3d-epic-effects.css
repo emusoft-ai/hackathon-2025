@@ -21,7 +21,7 @@
     transform-style: flat !important;
 }
 
-/* Main 3D Image - Sağa doğru yuvarlak şekilde dönen animasyon */
+/* Main 3D Image - Hafif, sürekli dönme animasyonu (Z ekseni) */
 #section-about .plexus-structure-wrapper img,
 #section-about .plexus-structure-wrapper img.about-3d-rotate-clockwise,
 #section-about img.plexus-img-processed {
@@ -42,47 +42,32 @@
             contrast(1.15)
             saturate(1.3);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: 
-        about-rotate-y-axis 20s linear infinite !important;
+    animation: about-rotate-y-axis 32s linear infinite;
     will-change: transform, filter;
 }
 
-/* Interactive wheel aktifse CSS animasyonunu kapat */
+/* Interactive wheel - JS ağır animasyon devre dışı, CSS animasyonu kullan */
 #section-about .plexus-structure-wrapper.interactive-wheel img.about-3d-rotate-clockwise,
 #section-about .plexus-structure-wrapper.interactive-wheel img {
-    animation: none !important;
     transition: none !important;
 }
 
-/* Interactive wheel - JavaScript kontrolünde, CSS animasyonu kapalı */
 #section-about .plexus-structure-wrapper.interactive-wheel img {
-    animation: none !important;
-    transition: none !important; /* JavaScript kontrol edecek */
-    transform-style: flat !important; /* 2D düzlem - 3D değil */
+    /* 2D düzlem - 3D, momentum vs yok */
+    transform-style: flat !important;
     transform-origin: center center !important;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    /* 3D efektleri kaldır - sadece 2D rotate */
     perspective: none !important;
-    /* Transform JavaScript tarafından kontrol edilecek - CSS override etmesin */
 }
 
-/* Sağa doğru yuvarlak şekilde dönen animasyon - Tekerlek gibi sürekli dönme (Z ekseni) */
+/* Hafif, sürekli dönme animasyonu - sadece Z ekseni */
 @keyframes about-rotate-y-axis {
     0% {
-        transform: rotate(0deg) translateY(0px);
-    }
-    25% {
-        transform: rotate(90deg) translateY(-15px);
-    }
-    50% {
-        transform: rotate(180deg) translateY(-30px);
-    }
-    75% {
-        transform: rotate(270deg) translateY(-15px);
+        transform: rotate(0deg);
     }
     100% {
-        transform: rotate(360deg) translateY(0px);
+        transform: rotate(360deg);
     }
 }
 
