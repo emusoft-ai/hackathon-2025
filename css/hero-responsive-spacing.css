@@ -52,6 +52,29 @@
     }
 }
 
+/* Büyük laptop ekranları (>= 1200px) için sayaç boyutu ve konumu */
+@media (min-width: 1200px) {
+    /* Sayaç kutularını biraz küçült ve yukarıdan boşluk bırak */
+    #section-hero .hero-countdown-new {
+        margin-top: 32px !important;
+    }
+
+    #section-hero .countdown-new .countdown-section {
+        min-width: 60px !important;
+        max-width: 72px !important;
+        min-height: 65px !important;
+        padding: 10px 8px !important;
+    }
+
+    #section-hero .countdown-new .countdown-amount {
+        font-size: 20px !important;
+    }
+
+    #section-hero .countdown-new .countdown-period {
+        font-size: 10px !important;
+    }
+}
+
 /* Mobile - Small Devices (max-width: 767px)
    Not: Burada 100vh sabit yükseklik KULLANMIYORUZ.
    İçerik yüksekse kahraman alanı dikeyde uzayabiliyor, böylece
