@@ -10,6 +10,8 @@
     justify-content: center;
     background: #000000;
     transition: opacity 0.6s ease, visibility 0.6s ease;
+    height: 100vh;
+    min-height: 100vh;
 }
 
 #intro-discovery.intro-hidden {
@@ -98,6 +100,18 @@ body.intro-active header,
 body.intro-active .float-text,
 body.intro-active .scrollbar-v {
     display: none !important;
+}
+
+/* Intro aktifken sayfanın scroll olmamasını sağla (mobilde siyah boşluk kalmasın) */
+body.intro-active {
+    overflow: hidden;
+}
+
+/* iOS Safari gibi tarayıcılarda gerçek tam ekran kullanımı için */
+@supports (-webkit-touch-callout: none) {
+    #intro-discovery {
+        height: -webkit-fill-available;
+    }
 }
 
 

@@ -153,15 +153,16 @@
     }
 }
 
-/* Ekstra büyük ekranlar için */
+/* Ekstra büyük ekranlar için (15.6\" laptop vb.) */
 @media (min-width: 1200px) {
+    /* Hero başlık logosunu biraz küçült */
     #section-hero .hero-title-image {
-        max-width: 1300px;
+        max-width: 1000px;
     }
     
     #section-hero .prize-organic-wrapper {
-        max-width: 380px; /* Küçültülmüş genişlik */
-        padding: 20px 35px; /* Küçültülmüş padding */
+        max-width: 360px; /* Biraz daha kompakt genişlik */
+        padding: 18px 30px; /* Dikey yükseklik azaltıldı */
     }
     
     #section-hero .prize-amount-organic {
@@ -175,7 +176,13 @@
     }
     
     #section-hero .hero-benefits {
-        margin-right: 40px !important; /* Sağa kaydır */
+        margin-right: 32px !important; /* Biraz daha az boşluk */
+    }
+
+    /* Genel hero yüksekliğini daha kompakt yap (üst/alt boşlukları azalt) */
+    #section-hero .abs.abs-centered .container {
+        padding-top: 40px !important;
+        padding-bottom: 32px !important;
     }
 }
 
