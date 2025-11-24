@@ -7,22 +7,14 @@
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Apply for Future Minds Hackathon - Construction AI Challenge" name="description">
-    <!-- CSS Files -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
-    <link href="css/vendors.css" rel="stylesheet" type="text/css">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css">
-    <link href="css/epic-effects.css" rel="stylesheet" type="text/css">
-    <link href="css/hackathon-purple-theme.css" rel="stylesheet" type="text/css">
-    <link href="css/award-winning-design.css" rel="stylesheet" type="text/css">
-    <link href="css/smooth-transitions.css" rel="stylesheet" type="text/css">
-    <link href="css/navbar-glassmorphism.css" rel="stylesheet" type="text/css">
-    <link href="css/navbar-logo-size.css" rel="stylesheet" type="text/css">
-    <link href="css/navbar-smooth-transition.css" rel="stylesheet" type="text/css">
-    <link href="css/navbar-visibility-fix.css" rel="stylesheet" type="text/css">
-    <link href="css/navbar-svg-logo.css" rel="stylesheet" type="text/css">
-    <link href="css/footer-enhanced.css" rel="stylesheet" type="text/css">
-    <link href="css/music-player.css" rel="stylesheet" type="text/css">
+    <!-- CSS Files (bundled in production) -->
+    <link rel="preload"
+          href="css/app.bundle.min.css"
+          as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/app.bundle.min.css">
+    </noscript>
     <style>
         * {
             margin: 0;

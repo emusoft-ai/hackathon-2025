@@ -30,62 +30,22 @@
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <!-- CSS Files -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
-    <link href="css/vendors.css" rel="stylesheet" type="text/css">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css">
-    <link href="css/epic-effects.css" rel="stylesheet" type="text/css">
-    <link href="css/hackathon-purple-theme.css" rel="stylesheet" type="text/css">
-    <link href="css/award-winning-design.css" rel="stylesheet" type="text/css">
-    <link href="css/smooth-transitions.css" rel="stylesheet" type="text/css">
-    <link href="css/countdown-hero-fix.css" rel="stylesheet" type="text/css">
-    <link href="css/navbar-glassmorphism.css" rel="stylesheet" type="text/css">
-    <link href="css/prize-card-fix.css" rel="stylesheet" type="text/css">
-    <link href="css/section-titles.css" rel="stylesheet" type="text/css">
-    <link href="css/section-titles-reversed.css" rel="stylesheet" type="text/css">
-    <link href="css/prize-pool-epic.css" rel="stylesheet" type="text/css">
-    <link href="css/prize-pool-award-winning.css" rel="stylesheet" type="text/css">
-    <link href="css/gain-section-award-winning.css" rel="stylesheet" type="text/css">
-    <link href="css/gain-carousel.css" rel="stylesheet" type="text/css">
-    <link href="css/prize-pool-award-ui.css" rel="stylesheet" type="text/css">
-    <link href="css/prize-counter-animation.css" rel="stylesheet" type="text/css">
-    <link href="css/section-optimization.css" rel="stylesheet" type="text/css">
-    <link href="css/award-winning-slider-transitions.css" rel="stylesheet" type="text/css">
-    <link href="css/faq-award-winning.css" rel="stylesheet" type="text/css">
-    <link href="css/ux-enhancements.css" rel="stylesheet" type="text/css">
-    <link href="css/plexus-structure-effects.css" rel="stylesheet" type="text/css">
-    <link href="css/plexus-background-remover.css" rel="stylesheet" type="text/css">
-    <link href="css/plexus-epic-effects.css" rel="stylesheet" type="text/css">
-    <link href="css/remove-3d-effects.css" rel="stylesheet" type="text/css">
-    <link href="css/award-winning-typography.css" rel="stylesheet" type="text/css">
-    <link href="css/premium-text-colors.css" rel="stylesheet" type="text/css">
-    <link href="css/modern-prize-card.css" rel="stylesheet" type="text/css">
-    <link href="css/modern-home-section.css" rel="stylesheet" type="text/css">
-    <link href="css/mobile-responsive.css" rel="stylesheet" type="text/css">
-    <link href="css/mobile-hero-fix.css" rel="stylesheet" type="text/css">
-    <link href="css/organized-by-section.css" rel="stylesheet" type="text/css">
-    <link href="css/navbar-visibility-fix.css" rel="stylesheet" type="text/css">
-    <link href="css/hero-logo-title.css" rel="stylesheet" type="text/css">
-    <link href="css/navbar-logo-size.css" rel="stylesheet" type="text/css">
-    <link href="css/navbar-smooth-transition.css" rel="stylesheet" type="text/css">
-    <link href="css/hero-prize-countdown-award.css" rel="stylesheet" type="text/css">
-    <link href="css/navbar-svg-logo.css" rel="stylesheet" type="text/css">
-    <link href="css/about-3d-epic-effects.css" rel="stylesheet" type="text/css">
-    <link href="css/venue-images-fix.css" rel="stylesheet" type="text/css">
-    <link href="css/desktop-home-layout.css" rel="stylesheet" type="text/css">
-    <link href="css/mobile-hero-content-fix.css" rel="stylesheet" type="text/css">
-    <link href="css/mobile-home-section.css" rel="stylesheet" type="text/css">
-    <link href="css/mobile-layout-comprehensive-fix.css" rel="stylesheet" type="text/css">
-    <link href="css/mobile-alignment-fix.css" rel="stylesheet" type="text/css">
-    <link href="css/mobile-benefits-horizontal-fix.css" rel="stylesheet" type="text/css">
-    <link href="css/hero-responsive-spacing.css" rel="stylesheet" type="text/css">
-    <link href="css/hero-mobile-fullscreen-fix.css" rel="stylesheet" type="text/css">
-    <link href="css/mobile-prize-pool-center.css" rel="stylesheet" type="text/css">
-    <link href="css/mobile-navbar-hero-spacing.css" rel="stylesheet" type="text/css">
-    <link href="css/footer-enhanced.css" rel="stylesheet" type="text/css">
-    <link href="css/music-player.css" rel="stylesheet" type="text/css">
-    <link href="css/intro-discovery.css" rel="stylesheet" type="text/css">
+
+    <!-- Critical inline styles: basic body + navbar + hero spacing -->
+    <style>
+      body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+      header.transparent{position:fixed;top:0;left:0;right:0;z-index:9999}
+      #section-hero{position:relative;min-height:100vh;padding-top:160px}
+    </style>
+
+    <!-- Single bundled stylesheet, loaded non-blocking -->
+    <link rel="preload"
+          href="css/app.bundle.min.css"
+          as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="css/app.bundle.min.css">
+    </noscript>
 </head>
 
 <body class="light-scheme">

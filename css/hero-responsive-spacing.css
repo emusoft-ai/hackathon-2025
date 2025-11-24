@@ -48,7 +48,7 @@
 /* Laptop & Desktop (>= 992px) - navbar ile hero arasında güvenli boşluk */
 @media (min-width: 992px) and (max-width: 1439px) {
     #section-hero {
-        padding-top: 140px !important; /* Biraz daha boşluk: navbar yüksekliği + extra margin */
+        padding-top: 160px !important; /* 20px daha aşağıya indirildi */
     }
 }
 
