@@ -1037,6 +1037,91 @@
     }
 }
 
+/* ============================================================
+   AWARD-WINNING MINIMAL COUNTDOWN PILL DESIGN
+   ============================================================ */
+.hero-countdown-new {
+    width: 100% !important;
+    max-width: 720px !important;
+    margin: clamp(32px, 6vh, 64px) auto 0 auto !important;
+    padding: 0 !important;
+    background: none !important;
+}
+
+#section-hero #defaultCountdown.countdown-new,
+.countdown-new .countdown-row {
+    display: flex !important;
+    justify-content: center !important;
+    gap: clamp(14px, 2vw, 28px) !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+}
+
+.countdown-new .countdown-section {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 120px;
+    padding: clamp(16px, 2vw, 22px) clamp(10px, 2vw, 18px) !important;
+    text-align: center;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 10px 40px rgba(13, 10, 30, 0.35);
+}
+
+.countdown-new .countdown-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(120deg, rgba(236,72,153,0.5), rgba(139,92,246,0.4));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.65;
+}
+
+.countdown-new .countdown-amount {
+    font-size: clamp(30px, 3.3vw, 44px) !important;
+    font-weight: 800 !important;
+    color: #fff !important;
+    letter-spacing: -1px;
+    margin-bottom: 4px !important;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.countdown-new .countdown-period {
+    font-size: 11px !important;
+    letter-spacing: 0.25em !important;
+    text-transform: uppercase;
+    color: rgba(226, 232, 240, 0.85) !important;
+    text-align: center !important;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    #section-hero #defaultCountdown.countdown-new,
+    .countdown-new .countdown-row {
+        flex-wrap: wrap !important;
+        gap: 12px !important;
+    }
+
+    .countdown-new .countdown-section {
+        flex: 1 1 calc(50% - 12px);
+        min-width: auto;
+        border-radius: 24px !important;
+    }
+
+    .countdown-new .countdown-period {
+        letter-spacing: 0.15em !important;
+        font-size: 10px !important;
+    }
+}
+
    Başlık hizasında prize pool, altında benefits, en altta ortalanmış countdown
    ============================================ */
 

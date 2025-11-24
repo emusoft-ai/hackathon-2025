@@ -14,8 +14,8 @@ header.transparent {
 
 /* Header Inner Container */
 header.transparent .container {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /* Logo - Transparent durumda emusoftdotai.png göster */
@@ -83,7 +83,7 @@ header.transparent .btn-main {
     border: 2px solid rgba(255, 255, 255, 0.25) !important;
     color: #ffffff !important;
     font-weight: 700;
-    padding: 12px 28px !important;
+    padding: 10px 22px !important;
     border-radius: 50px;
     transition: all 0.3s ease;
 }
