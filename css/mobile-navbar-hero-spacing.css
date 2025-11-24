@@ -393,20 +393,34 @@
         opacity: 0 !important;
     }
 
-    /* Sadece Apply Now butonu kalsın ve mobilde kompakt olsun */
+    /* Sadece Apply Now / Back to Home butonu kalsın ve mobilde ekstra küçük olsun */
     header.transparent .de-flex-col .btn-main.fx-slide.w-100 {
         display: inline-flex !important;
         width: auto !important;
-        max-width: 160px !important;
+        max-width: 100px !important;
         justify-content: center !important;
         margin-left: 0 !important;
-        padding: 6px 14px !important;
-        font-size: 12px !important;
+        padding: 2px 8px !important;
+        font-size: 9px !important;
         border-radius: 999px !important;
+    }
+
+    /* Navbar yüksekliğini küçült */
+    header.transparent {
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
     }
 
     header.transparent .de-flex {
         justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    /* Logo mobilde daha küçük olsun */
+    header.transparent #logo img {
+        max-height: 26px !important;
+        height: 26px !important;
+        width: auto !important;
     }
 }
 
