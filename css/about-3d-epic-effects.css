@@ -187,18 +187,19 @@
     }
 }
 
-/* Hover Effects - İnteraktif hover (pulse yok) */
-    #section-about .plexus-structure-wrapper:hover img {
+/* Hover Effects - İnteraktif hover (pulse yok)
+   Not: Interactive wheel bu kurala DAHİL DEĞİL; sadece statik kullanım için. */
+    #section-about .plexus-structure-wrapper:not(.interactive-wheel):hover img {
         animation: 
             about-rotate-y-axis-fast 12s linear infinite;
-    filter: drop-shadow(0 50px 120px rgba(139, 92, 246, 0.6)) 
-            drop-shadow(0 0 150px rgba(167, 139, 250, 0.7))
-            drop-shadow(0 0 200px rgba(236, 72, 153, 0.5))
-            brightness(1.3) 
-            contrast(1.2)
-            saturate(1.4);
-    transform: scale(1.15) translateZ(50px);
-}
+        filter: drop-shadow(0 50px 120px rgba(139, 92, 246, 0.6)) 
+                drop-shadow(0 0 150px rgba(167, 139, 250, 0.7))
+                drop-shadow(0 0 200px rgba(236, 72, 153, 0.5))
+                brightness(1.3) 
+                contrast(1.2)
+                saturate(1.4);
+        transform: scale(1.15) translateZ(50px);
+    }
 
 /* Hover'da daha hızlı sağa doğru dönme */
 @keyframes about-rotate-y-axis-fast {
@@ -535,7 +536,9 @@
     animation-direction: normal;
 }
 
-/* Hover effect - subtle scale */
+/* Hover effect - subtle scale (INTERACTIVE WHEEL)
+   JS rotate açısını kontrol ettiği için burada
+   animation / transform'a hiç dokunmuyoruz, sadece filtreyi değiştiriyoruz. */
 #section-about .plexus-structure-wrapper.interactive-wheel:hover img {
     filter: drop-shadow(0 40px 100px rgba(139, 92, 246, 0.5)) 
             drop-shadow(0 0 120px rgba(167, 139, 250, 0.6))

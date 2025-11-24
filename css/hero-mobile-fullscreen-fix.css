@@ -13,7 +13,7 @@
         overflow-y: auto !important;
     }
     
-    /* Hero Section - RELATIVE FULL SCREEN (scrollable) */
+    /* Hero Section - RELATIVE FULL SCREEN (scrollable, no clipping) */
     #section-hero.jarallax,
     #section-hero {
         position: relative !important;
@@ -21,12 +21,15 @@
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
-        height: 100vh !important; /* Exactly one screen */
+        /* En az ekran yüksekliği kadar olsun ama içerik yüksekse uzayabilsin */
         min-height: 100vh !important;
-        max-height: 100vh !important;
+        height: auto !important;
+        max-height: none !important;
         margin: 0 !important;
         padding: 0 !important;
-        overflow: hidden !important; /* No scroll inside hero */
+        /* İçerik taşarsa dikey scroll'a izin ver, yatay taşmayı engelle */
+        overflow-x: hidden !important;
+        overflow-y: visible !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: flex-start !important; /* Changed from center */

@@ -45,18 +45,24 @@
     }
 }
 
-/* Mobile - Small Devices (max-width: 767px) */
+/* Mobile - Small Devices (max-width: 767px)
+   Not: Burada 100vh sabit yükseklik KULLANMIYORUZ.
+   İçerik yüksekse kahraman alanı dikeyde uzayabiliyor, böylece
+   bazı cihazlarda yaşanan kesilme / overflow sorunları engelleniyor. */
 @media (max-width: 767px) {
     
-    /* Hero Section - RELATIVE FULL SCREEN (scrollable away) */
+    /* Hero Section - Full viewport minimum, esnek yükseklik */
     #section-hero {
         padding-top: 0 !important;
         padding-bottom: 0 !important;
         margin-top: 0 !important;
+        /* En az ekran kadar, ama içerik daha uzunsa serbest bırak */
         min-height: 100vh !important;
-        height: 100vh !important; /* Exactly one screen */
-        max-height: 100vh !important;
-        overflow: hidden !important;
+        height: auto !important;
+        max-height: none !important;
+        /* Yatay taşmayı engelle, dikeyde normal scroll kalsın */
+        overflow-x: hidden !important;
+        overflow-y: visible !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: flex-start !important; /* Changed from center */
