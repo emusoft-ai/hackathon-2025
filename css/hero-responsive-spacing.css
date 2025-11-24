@@ -706,3 +706,58 @@
     }
 }
 
+/* ============================================
+   Countdown overflow & spacing fix (desktop)
+   Ensures countdown never touches the section below
+   and prevents vertical overflow on medium-height screens
+   ============================================ */
+@media (min-width: 768px) {
+    #section-hero,
+    #section-hero.jarallax {
+        padding-bottom: clamp(48px, 7vh, 120px) !important;
+    }
+
+    #section-hero .abs.abs-centered {
+        height: auto !important;
+        min-height: 100vh !important;
+        padding-bottom: clamp(48px, 7vh, 120px) !important;
+        overflow: visible !important;
+    }
+
+    #section-hero .row.mt-4,
+    .hero-countdown-new {
+        margin-bottom: clamp(24px, 4vh, 60px) !important;
+    }
+}
+
+@media (min-width: 992px) and (max-height: 860px) {
+    #section-hero .abs.abs-centered {
+        padding-top: clamp(140px, 20vh, 220px) !important;
+        padding-bottom: clamp(64px, 12vh, 160px) !important;
+    }
+
+    #section-hero,
+    #section-hero.jarallax {
+        padding-bottom: clamp(64px, 12vh, 160px) !important;
+    }
+}
+
+/* ============================================
+   Desktop navbar clearance for hero badges
+   Prevents date/location chips from colliding
+   with the fixed header on standard desktops
+   ============================================ */
+@media (min-width: 992px) {
+    #section-hero .abs.abs-centered {
+        padding-top: clamp(140px, 18vh, 240px) !important;
+    }
+
+    #section-hero .col-lg-7 {
+        padding-top: clamp(10px, 2vh, 40px) !important;
+    }
+
+    #section-hero .hero-meta-badges {
+        margin-top: clamp(12px, 2vh, 32px) !important;
+    }
+}
+

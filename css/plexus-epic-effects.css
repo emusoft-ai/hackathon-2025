@@ -210,8 +210,8 @@
     animation: none !important;
 }
 
-/* Interactive Scale on Click */
-.plexus-structure-wrapper:active img {
+/* Interactive Scale on Click (disable for interactive wheel) */
+.plexus-structure-wrapper:not(.interactive-wheel):active img {
     transform: scale(0.95) !important;
     transition: transform 0.1s ease-out;
 }

@@ -50,19 +50,24 @@
         // Baz değerler (touch için daha yüksek hassasiyet, mouse için daha düşük)
         var dragSensitivityX = prefersReducedMotion ? 0.5 : 1.05;
         var dragSensitivityY = prefersReducedMotion ? -0.35 : -0.7;
-        var maxVelocity = prefersReducedMotion ? 4 : 10;
+        var maxVelocity = prefersReducedMotion ? 90 : 480;
         var isMouseDrag = false;
         var highEnergyThreshold = baseSpeed * 18;
-        var friction = prefersReducedMotion ? 0.985 : 0.972;
-        var reverseFriction = prefersReducedMotion ? 0.94 : 0.92;
-        var settleEase = prefersReducedMotion ? 0.025 : 0.045;
-        var minVelocitySnap = 0.0005;
+        var friction = prefersReducedMotion ? 0.987 : 0.978;
+        var reverseFriction = prefersReducedMotion ? 0.95 : 0.94;
+        var highVelocityDamp = prefersReducedMotion ? 0.995 : 0.984;
+        var settleEase = prefersReducedMotion ? 0.015 : 0.03;
+        var reverseReturnEase = prefersReducedMotion ? 0.035 : 0.065;
+        var minVelocitySnap = 0.0002;
         var lastTime = null;
         var centerX = 0;
         var centerY = 0;
         var lastDragAngle = null; // radians
         var lastDragTime = 0;
         var velocitySamples = [];
+        var momentumBoost = prefersReducedMotion ? 1.0 : 1.18;
+        var mouseFallbackActive = false;
+        var touchFallbackActive = false;
 
         function setRotation(value) {
             rotation = value;
@@ -106,20 +111,35 @@
                     setDirectionData();
                     applyEnergyGlow();
 
-                    // Sürtünme ile yavaşlat
-                    currentVelocity *= friction;
                     var absVel = Math.abs(currentVelocity);
                     var absBase = Math.abs(baseSpeed);
+                    var sameDirection = (currentVelocity === 0 && baseSpeed === 0) ||
+                        (currentVelocity >= 0 && baseSpeed >= 0) ||
+                        (currentVelocity <= 0 && baseSpeed <= 0);
+                    var frameFactor = Math.min(deltaSeconds * 60, 3);
 
-                    // Yeterince yavaşladığında otomatik hıza easing ile dön
-                    if (absVel < absBase * 0.5) {
-                        currentVelocity += (baseSpeed - currentVelocity) * settleEase;
-                        if (Math.abs(currentVelocity - baseSpeed) < minVelocitySnap) {
-                            currentVelocity = baseSpeed;
-                            userControlActive = false;
-                            wrapper.classList.remove('wheel-impulse');
-                            image.classList.remove('wheel-spin-impulse');
-                        }
+                    // Sürtünme: momentumun doğal azalması
+                    var frictionFactor = sameDirection ? friction : reverseFriction;
+                    currentVelocity *= Math.pow(frictionFactor, frameFactor);
+
+                    // Aşırı enerji durumunda daha hızlı yavaşlat, fakat serbest bırakma hızını koru
+                    if (absVel > absBase * 3) {
+                        currentVelocity *= Math.pow(highVelocityDamp, frameFactor);
+                    }
+
+                    // Saat yönü tersine döndürülmüşse yumuşak geri çağırma
+                    if (!sameDirection) {
+                        currentVelocity += (baseSpeed - currentVelocity) * reverseReturnEase * frameFactor;
+                    } else if (absVel < absBase * 0.65) {
+                        // Yavaşsa tekrar temel hıza doğru yumuşak yaklaşım
+                        currentVelocity += (baseSpeed - currentVelocity) * settleEase * frameFactor;
+                    }
+
+                    if (Math.abs(currentVelocity - baseSpeed) < minVelocitySnap) {
+                        currentVelocity = baseSpeed;
+                        userControlActive = false;
+                        wrapper.classList.remove('wheel-impulse');
+                        image.classList.remove('wheel-spin-impulse');
                     }
                 } else {
                     // Varsayılan sabit saat yönü dönüşü
@@ -135,6 +155,9 @@
         // Drag başlangıcı: otomatik dönüşü durdur ve açı tabanlı kontrolü başlat
         function startDrag(event) {
             if (dragging) return;
+            if (event && event.preventDefault) {
+                event.preventDefault();
+            }
 
             dragging = true;
             pointerId = event.pointerId != null ? event.pointerId : null;
@@ -222,14 +245,21 @@
             if (!dragging) return;
             if (pointerId != null && event && event.pointerId !== pointerId) return;
             dragging = false;
+            removeMouseFallbackListeners();
+            removeTouchFallbackListeners();
 
             // Son örneklerden açısal hız tahmini (deg / s)
             if (velocitySamples.length > 0) {
-                var sum = 0;
+                var weightedSum = 0;
+                var totalWeight = 0;
                 for (var i = 0; i < velocitySamples.length; i++) {
-                    sum += velocitySamples[i];
+                    var weight = i + 1; // yeni örnekler daha değerli
+                    weightedSum += velocitySamples[i] * weight;
+                    totalWeight += weight;
                 }
-                currentVelocity = clamp(sum / velocitySamples.length, -maxVelocity, maxVelocity);
+                var averagedVelocity = weightedSum / (totalWeight || 1);
+                var energyFactor = 1 + Math.min(Math.abs(averagedVelocity) / 360, 0.4);
+                currentVelocity = clamp(averagedVelocity * momentumBoost * energyFactor, -maxVelocity, maxVelocity);
                 userControlActive = true;
             } else {
                 currentVelocity = baseSpeed;
@@ -263,11 +293,17 @@
             handleDragSample(event.clientX, event.clientY, event.timeStamp);
         }
 
-        function onMouseUp() {
-            if (!dragging) return;
-            endDrag({});
+        function removeMouseFallbackListeners() {
+            if (!mouseFallbackActive) return;
+            mouseFallbackActive = false;
             window.removeEventListener('mousemove', onMouseMove);
             window.removeEventListener('mouseup', onMouseUp);
+        }
+
+        function onMouseUp(event) {
+            removeMouseFallbackListeners();
+            if (!dragging) return;
+            endDrag(event || {});
         }
 
         function onTouchMove(event) {
@@ -276,12 +312,33 @@
             handleDragSample(touch.clientX, touch.clientY, event.timeStamp);
         }
 
-        function onTouchEnd() {
-            if (!dragging) return;
-            endDrag({});
+        function removeTouchFallbackListeners() {
+            if (!touchFallbackActive) return;
+            touchFallbackActive = false;
             window.removeEventListener('touchmove', onTouchMove);
             window.removeEventListener('touchend', onTouchEnd);
             window.removeEventListener('touchcancel', onTouchEnd);
+        }
+
+        function onTouchEnd(event) {
+            removeTouchFallbackListeners();
+            if (!dragging) return;
+            endDrag(event || {});
+        }
+
+        function addMouseFallbackListeners() {
+            if (mouseFallbackActive) return;
+            mouseFallbackActive = true;
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', onMouseUp);
+        }
+
+        function addTouchFallbackListeners() {
+            if (touchFallbackActive) return;
+            touchFallbackActive = true;
+            window.addEventListener('touchmove', onTouchMove, { passive: false });
+            window.addEventListener('touchend', onTouchEnd);
+            window.addEventListener('touchcancel', onTouchEnd);
         }
 
         function bindEvents() {
@@ -295,11 +352,25 @@
 
             var supportsPointerEvents = 'PointerEvent' in window;
 
+            // Native image drag'ini kapat (desktop mouse için şart)
+            image.setAttribute('draggable', 'false');
+            image.addEventListener('dragstart', function(event) {
+                event.preventDefault();
+            });
+
             if (supportsPointerEvents) {
                 // Modern tarayıcılar için pointer event yolu
                 wrapper.addEventListener('pointerdown', function(event) {
                     if (event.button !== undefined && event.button !== 0) return;
+                    event.preventDefault();
                     startDrag(event);
+
+                    var pType = event.pointerType || (event.touches ? 'touch' : 'mouse');
+                    if (pType === 'mouse' || pType === '') {
+                        addMouseFallbackListeners();
+                    } else if (pType === 'touch' || pType === 'pen') {
+                        addTouchFallbackListeners();
+                    }
                 });
             } else {
                 // Eski desktop / mobil tarayıcılar için mouse + touch fallback
@@ -309,8 +380,7 @@
                     event.pointerType = 'mouse';
                     isMouseDrag = true;
                     startDrag(event);
-                    window.addEventListener('mousemove', onMouseMove);
-                    window.addEventListener('mouseup', onMouseUp);
+                    addMouseFallbackListeners();
                 });
 
                 wrapper.addEventListener('touchstart', function(event) {
@@ -324,14 +394,18 @@
                     };
                     isMouseDrag = false;
                     startDrag(normalizedEvent);
-                    window.addEventListener('touchmove', onTouchMove, { passive: false });
-                    window.addEventListener('touchend', onTouchEnd);
-                    window.addEventListener('touchcancel', onTouchEnd);
+                    addTouchFallbackListeners();
                 }, { passive: false });
             }
 
             wrapper.addEventListener('contextmenu', function(event) {
                 event.preventDefault();
+            });
+
+            // Güvenlik için viewport değiştiğinde aktif fallback'leri temizle
+            window.addEventListener('blur', function() {
+                removeMouseFallbackListeners();
+                removeTouchFallbackListeners();
             });
         }
 
