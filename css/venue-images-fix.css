@@ -1,0 +1,171 @@
+/* ============================================
+   VENUE SECTION - IMAGE SIZE FIX & COMPACT LAYOUT
+   Ensures consistent image dimensions and compact spacing
+   ============================================ */
+
+/* Venue Section - Compact Padding */
+#section-venue {
+    padding: 50px 0 40px !important;
+}
+
+/* Venue Images - Fixed Height Container */
+#section-venue .hover.relative.overflow-hidden {
+    height: 400px;
+}
+
+#section-venue .hover.relative.overflow-hidden img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Compact Info Cards */
+#section-venue .row.g-4.justify-content-center > div {
+    margin-bottom: 0;
+}
+
+#section-venue .d-flex.align-items-start {
+    margin-bottom: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    #section-venue {
+        padding: 40px 0 30px !important;
+    }
+    
+    #section-venue .hover.relative.overflow-hidden {
+        height: 350px;
+    }
+}
+
+@media (max-width: 767px) {
+    #section-venue {
+        padding: 35px 0 25px !important;
+    }
+    
+    /* SADECE resim row'u - Loop carousel - ORTALANMIŞ */
+    #section-venue .row.g-4.mb-3 {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 0 !important;
+        padding: 10px 0 !important;
+        margin: 0 auto 20px auto !important;
+        position: relative !important;
+        width: 85% !important; /* Daha küçük ve ortalı */
+        max-width: 400px !important;
+        height: 200px !important;
+    }
+    
+    /* Her iki resim de aynı yerde - üst üste - ORTALANMIŞ */
+    #section-venue .col-sm-6 {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* İlk resim - 0-5sn göster, 5-10sn gizli */
+    #section-venue .col-sm-6:nth-child(1) {
+        animation: venue-fade-1 10s ease-in-out infinite !important;
+    }
+    
+    /* İkinci resim - 0-5sn gizli, 5-10sn göster */
+    #section-venue .col-sm-6:nth-child(2) {
+        animation: venue-fade-2 10s ease-in-out infinite !important;
+    }
+    
+    #section-venue .hover.relative.overflow-hidden {
+        height: 200px !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+    
+    #section-venue .hover.relative.overflow-hidden img {
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+}
+
+/* Fade animasyon - Resim 1 */
+@keyframes venue-fade-1 {
+    0% {
+        opacity: 1;
+        z-index: 2;
+    }
+    45% {
+        opacity: 1;
+        z-index: 2;
+    }
+    50% {
+        opacity: 0;
+        z-index: 1;
+    }
+    95% {
+        opacity: 0;
+        z-index: 1;
+    }
+    100% {
+        opacity: 1;
+        z-index: 2;
+    }
+}
+
+/* Fade animasyon - Resim 2 */
+@keyframes venue-fade-2 {
+    0% {
+        opacity: 0;
+        z-index: 1;
+    }
+    45% {
+        opacity: 0;
+        z-index: 1;
+    }
+    50% {
+        opacity: 1;
+        z-index: 2;
+    }
+    95% {
+        opacity: 1;
+        z-index: 2;
+    }
+    100% {
+        opacity: 0;
+        z-index: 1;
+    }
+}
+
+@media (max-width: 575px) {
+    #section-venue {
+        padding: 30px 0 20px !important;
+    }
+    
+    /* Daha küçük ekranlarda container küçülür */
+    #section-venue .row.g-4.mb-3 {
+        width: 90% !important;
+        max-width: 350px !important;
+        height: 180px !important;
+    }
+    
+    #section-venue .hover.relative.overflow-hidden {
+        height: 180px !important;
+    }
+}
+
+@media (max-width: 390px) {
+    /* iPhone SE - daha da küçük */
+    #section-venue .row.g-4.mb-3 {
+        width: 95% !important;
+        max-width: 320px !important;
+        height: 160px !important;
+    }
+    
+    #section-venue .hover.relative.overflow-hidden {
+        height: 160px !important;
+    }
+}
+

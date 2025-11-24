@@ -1,0 +1,169 @@
+/* ============================================
+   SECTION OPTIMIZATION - AWARD WINNING
+   Optimal padding and spacing for all sections
+   Based on award-winning UI/UX best practices
+   ============================================ */
+
+/* === HERO SECTION - Full Viewport === */
+#section-hero {
+    min-height: 100vh !important;
+    padding: 0 !important;
+}
+
+/* Extra Large Desktop - Sadece çok büyük ekranlarda padding ayarla */
+@media (min-width: 1600px) and (max-width: 1919px) {
+    #section-hero {
+        min-height: 100vh !important;
+    }
+    
+    #section-hero .abs.abs-centered {
+        padding-top: 200px;
+        padding-bottom: 60px;
+    }
+}
+
+/* Ultra Wide Desktop */
+@media (min-width: 1920px) {
+    #section-hero {
+        min-height: 100vh !important;
+    }
+    
+    #section-hero .abs.abs-centered {
+        padding-top: 220px;
+        padding-bottom: 70px;
+    }
+}
+
+/* 4K and Above */
+@media (min-width: 2560px) {
+    #section-hero {
+        min-height: 100vh !important;
+    }
+    
+    #section-hero .abs.abs-centered {
+        padding-top: 240px;
+        padding-bottom: 80px;
+    }
+}
+
+/* === PRIZE POOL - Important but Compact === */
+#section-prizes {
+    padding: 100px 0 !important;
+}
+
+/* === ABOUT SECTION - Standard === */
+#section-about {
+    padding: 80px 0 !important;
+}
+
+/* === WHAT YOU'LL GAIN - Standard === */
+#section-why-attend {
+    padding: 80px 0 !important;
+}
+
+/* === VENUE SECTION - Standard === */
+#section-venue {
+    padding: 80px 0 !important;
+}
+
+/* === FAQ SECTION - Standard === */
+#section-faq {
+    padding: 80px 0 !important;
+}
+
+/* === SPONSORS/ORGANIZED BY - Compact === */
+section:has(.subtitle:contains("Organized By")),
+section[class*="sponsor"] {
+    padding: 60px 0 !important;
+}
+
+/* === MARQUEE SECTION - Minimal === */
+section[class*="marquee"] {
+    padding: 0 !important;
+}
+
+/* === RESPONSIVE OPTIMIZATION === */
+@media (max-width: 991px) {
+    #section-hero {
+        min-height: 90vh !important;
+    }
+    
+    #section-prizes {
+        padding: 80px 0 !important;
+    }
+    
+    #section-about,
+    #section-why-attend,
+    #section-venue {
+        padding: 60px 0 !important;
+    }
+    
+    section:has(.subtitle:contains("Organized By")) {
+        padding: 50px 0 !important;
+    }
+}
+
+@media (max-width: 767px) {
+    #section-hero {
+        min-height: 100vh !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    #section-prizes {
+        padding: 60px 0 !important;
+    }
+    
+    #section-about,
+    #section-why-attend,
+    #section-venue {
+        padding: 50px 0 !important;
+    }
+    
+    section:has(.subtitle:contains("Organized By")) {
+        padding: 40px 0 !important;
+    }
+}
+
+/* === SPACING BETWEEN SECTIONS === */
+section + section {
+    margin-top: 0;
+}
+
+/* === INTERNAL SPACING OPTIMIZATION === */
+.spacer-double {
+    height: 60px !important;
+}
+
+.spacer-single {
+    height: 40px !important;
+}
+
+/* === CONTAINER OPTIMIZATION === */
+.container {
+    max-width: 1200px;
+}
+
+/* === CONTENT SPACING === */
+section .row {
+    margin-bottom: 0;
+}
+
+section .row:last-child {
+    margin-bottom: 0;
+}
+
+/* === REMOVE EXCESSIVE MARGINS === */
+section h2 {
+    margin-bottom: 24px !important;
+}
+
+section h3 {
+    margin-bottom: 20px !important;
+}
+
+section p.lead {
+    margin-bottom: 32px !important;
+}
+

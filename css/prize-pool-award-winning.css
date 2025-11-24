@@ -1,0 +1,281 @@
+/* ============================================
+   PRIZE POOL - AWARD WINNING UI/UX
+   Muhteşem, modern, etkileyici tasarım
+   ============================================ */
+
+/* Prize Pool Section - Enhanced */
+#section-prizes {
+    padding: 160px 0 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+#section-prizes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(167,139,250,0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(236,72,153,0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+    animation: background-pulse 8s ease-in-out infinite;
+}
+
+@keyframes background-pulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+#section-prizes .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Prize Amount - Ultra Epic with Gradient */
+#section-prizes h3 {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(135deg, #ffffff 0%, #f3e8ff 50%, #ffffff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 6px 30px rgba(0,0,0,0.5));
+    animation: float-epic 4s ease-in-out infinite, gradient-shift 5s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes float-epic {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Prize Feature Cards - Award Winning Design */
+.prize-feature-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.prize-feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.prize-feature-card:hover::before {
+    left: 100%;
+}
+
+.prize-feature-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(167, 139, 250, 0.2),
+        inset 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+/* Prize Icon Wrapper - Epic Design */
+.prize-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(167,139,250,0.3), rgba(236,72,153,0.3));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.prize-icon-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a78bfa, #ec4899);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    filter: blur(10px);
+}
+
+.prize-feature-card:hover .prize-icon-wrapper::before {
+    opacity: 0.6;
+}
+
+.prize-feature-card:hover .prize-icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, rgba(167,139,250,0.5), rgba(236,72,153,0.5));
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.prize-icon-wrapper i {
+    font-size: 48px;
+    color: #ffffff;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+}
+
+.prize-feature-card:hover .prize-icon-wrapper i {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+/* Lead Text Styling */
+#section-prizes .lead {
+    position: relative;
+    padding: 0 20px;
+}
+
+/* Gradient Underline - Enhanced */
+#section-prizes .gradient-underline {
+    position: relative;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        opacity: 0.8;
+        box-shadow: 0 2px 10px rgba(167,139,250,0.5);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 4px 20px rgba(167,139,250,0.8);
+    }
+}
+
+/* Title Pulse Animation */
+#section-prizes h2 {
+    animation: pulse-glow 3s ease-in-out infinite;
+    position: relative;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        text-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 30px rgba(167,139,250,0.2);
+    }
+    50% {
+        text-shadow: 0 4px 30px rgba(0,0,0,0.5), 0 0 50px rgba(167,139,250,0.4);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    #section-prizes {
+        padding: 120px 0 !important;
+    }
+    
+    #section-prizes h2 {
+        font-size: clamp(48px, 6vw, 72px) !important;
+        margin-bottom: 40px !important;
+    }
+    
+    #section-prizes h3 {
+        font-size: clamp(64px, 10vw, 120px) !important;
+    }
+    
+    .prize-feature-card {
+        padding: 32px 24px;
+    }
+    
+    .prize-icon-wrapper {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .prize-icon-wrapper i {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 767px) {
+    #section-prizes {
+        padding: 100px 0 !important;
+    }
+    
+    #section-prizes h2 {
+        font-size: clamp(40px, 7vw, 56px) !important;
+        margin-bottom: 32px !important;
+        letter-spacing: 2px !important;
+    }
+    
+    #section-prizes h3 {
+        font-size: clamp(56px, 12vw, 96px) !important;
+        margin-bottom: 20px !important;
+    }
+    
+    #section-prizes .lead {
+        font-size: clamp(16px, 2vw, 20px) !important;
+        padding: 0 15px;
+    }
+    
+    .prize-feature-card {
+        padding: 28px 20px;
+        margin-bottom: 20px;
+    }
+    
+    .prize-icon-wrapper {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .prize-icon-wrapper i {
+        font-size: 36px;
+    }
+    
+    .prize-feature-card h4 {
+        font-size: 18px !important;
+    }
+    
+    .prize-feature-card p {
+        font-size: 14px !important;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    #section-prizes h2,
+    #section-prizes h3,
+    .prize-feature-card,
+    .prize-icon-wrapper {
+        animation: none !important;
+    }
+}
+

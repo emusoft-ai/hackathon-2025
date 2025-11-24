@@ -1,0 +1,78 @@
+/* ============================================
+   REMOVE 3D EFFECTS
+   Home section başlıkları ve prize amount için
+   ============================================ */
+
+/* Home Section - Ana Başlık - Parlak beyaz renk */
+#section-hero h1 {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.4), 0 0 30px rgba(255,255,255,0.1) !important;
+    transform: none !important;
+    perspective: none !important;
+    transform-style: flat !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -o-transform: none !important;
+    filter: brightness(1.1) !important;
+}
+
+/* Home Section - Alt Başlık - Parlak beyaz renk */
+#section-hero h3 {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.08) !important;
+    transform: none !important;
+    perspective: none !important;
+    transform-style: flat !important;
+    filter: brightness(1.05) !important;
+}
+
+/* Prize Card - 150.000 TL - Parlak beyaz renk */
+#section-hero .border-white-op-3 h2,
+#section-hero h2.prize-amount {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.4), 0 0 30px rgba(255,255,255,0.15) !important;
+    transform: none !important;
+    perspective: none !important;
+    transform-style: flat !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -o-transform: none !important;
+    filter: brightness(1.15) !important;
+}
+
+/* Tüm 3D transform'ları kaldır */
+#section-hero * {
+    transform-style: flat !important;
+    perspective: none !important;
+}
+
+/* Text-shadow'ları parlak yap - beyaz glow efekti */
+#section-hero h1,
+#section-hero h2,
+#section-hero h3 {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* Prize amount özel - parlak görünüm */
+#section-hero .border-white-op-3 h2 {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.4), 0 0 30px rgba(255,255,255,0.15) !important;
+    filter: brightness(1.15) !important;
+    -webkit-filter: brightness(1.15) !important;
+}
+
+/* Hover efektlerini de kaldır */
+#section-hero h1:hover,
+#section-hero h2:hover,
+#section-hero h3:hover {
+    transform: none !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.25) !important;
+}
+
