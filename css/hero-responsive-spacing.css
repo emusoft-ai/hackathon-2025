@@ -340,7 +340,7 @@
         font-weight: 600 !important;
     }
     
-    /* Benefits - horizontal, yan yana metinler */
+    /* Benefits - FORCE horizontal, yan yana, NO WRAP on mobile too */
     #section-hero .hero-benefits,
     #section-hero .col-lg-5 .hero-benefits,
     #section-hero .col-lg-7 .hero-benefits,
@@ -350,34 +350,40 @@
     .hero-right-content .hero-benefits {
         display: flex !important;
         flex-direction: row !important;
-        flex-wrap: wrap !important;
+        flex-wrap: nowrap !important;
         align-items: center !important;
         justify-content: center !important;
-        gap: 8px !important;
+        gap: 6px !important;
         width: 100% !important;
         max-width: 100% !important;
-        margin: 0 !important;
+        margin: 8px 0 0 0 !important;
         padding: 0 !important;
         overflow: visible !important;
     }
     
-    .hero-benefits .benefit-item-organic {
-        font-size: 14px !important;
+    .hero-benefits .benefit-item-organic,
+    #section-hero .hero-benefits .benefit-item-organic,
+    #section-hero .col-lg-5 .hero-benefits .benefit-item-organic,
+    #section-hero .hero-right-content .hero-benefits .benefit-item-organic {
+        font-size: 12px !important;
         padding: 2px 6px !important;
         width: auto !important;
         margin: 0 !important;
         justify-content: center !important;
         display: inline-flex !important;
         white-space: nowrap !important;
+        flex-shrink: 0 !important;
     }
     
     .hero-benefits .benefit-item-organic i,
-    .hero-benefits .benefit-item-organic .icofont-check-circled {
-        font-size: 14px !important;
+    .hero-benefits .benefit-item-organic .icofont-check-circled,
+    #section-hero .hero-benefits .benefit-item-organic i,
+    #section-hero .hero-benefits .benefit-item-organic span {
+        font-size: 12px !important;
     }
     
     .hero-benefits .benefit-item-organic span {
-        font-size: 14px !important;
+        font-size: 12px !important;
     }
     
     /* Prize Pool - VERY LARGE and perfectly centered */
@@ -832,31 +838,58 @@
    - Reduce gap between deadline and CTA
    ============================================ */
 
-/* Benefits always horizontal & wrapping */
-#section-hero .hero-benefits {
+/* Benefits always horizontal, compact, no wrapping */
+#section-hero .hero-benefits,
+#section-hero .col-lg-5 .hero-benefits,
+#section-hero .col-lg-7 .hero-benefits,
+#section-hero .hero-right-content .hero-benefits,
+.hero-benefits {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important;
+    gap: 6px !important;
     margin-top: 8px !important;
+    margin-bottom: 0 !important;
+    overflow: visible !important;
 }
 
-#section-hero .hero-benefits .benefit-item-organic {
+#section-hero .hero-benefits .benefit-item-organic,
+#section-hero .col-lg-5 .hero-benefits .benefit-item-organic,
+#section-hero .hero-right-content .hero-benefits .benefit-item-organic,
+.hero-benefits .benefit-item-organic {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 6px !important;
-    padding: 2px 8px !important;
+    gap: 4px !important;
+    padding: 2px 6px !important;
     white-space: nowrap !important;
+    font-size: 12px !important;
 }
 
-/* Remove extra vertical gap between deadline and CTA buttons */
-#section-hero .text-center.mb-5 {
-    margin-bottom: 10px !important;
+#section-hero .hero-benefits .benefit-item-organic span {
+    font-size: 12px !important;
+}
+
+/* Remove extra vertical gap between deadline and CTA buttons - ALL DEVICES */
+#section-hero .text-center.mb-5,
+#section-hero .text-center.mb-0 {
+    margin-bottom: 0 !important;
 }
 
 #section-hero .hero-cta-buttons {
-    margin-top: 0 !important;
+    margin-top: 8px !important;
+}
+
+/* Mobile: even tighter spacing */
+@media (max-width: 767px) {
+    #section-hero .text-center.mb-5,
+    #section-hero .text-center.mb-0 {
+        margin-bottom: 0 !important;
+    }
+
+    #section-hero .hero-cta-buttons {
+        margin-top: 6px !important;
+    }
 }
 
